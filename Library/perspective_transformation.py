@@ -19,6 +19,7 @@ class Perspective:
             -------
         punto3   punto4
         """
+        # Se toma el tamaño de la imagen original
         height, width, channel = self.imagen.shape
 
         # Aqui se hace un acorrección de la logica debido a que cambia la ubicación de los puntos
