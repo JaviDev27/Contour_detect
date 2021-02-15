@@ -21,7 +21,8 @@ class Calibrate:
     """Clase que sirve para calibrar la cama
     """
 
-    def __init__(self):
+    def __init__(self, wait=1):
+        self.wait = wait
         # Variables of the class
         self.data_calibrate = Data_Calibrate()
 
@@ -83,7 +84,7 @@ class Calibrate:
                     img, (width, heigth), corners2, ret)
 
                 cv.imshow('img', img)
-                cv.waitKey(0)
+                cv.waitKey(self.wait)
 
         self.data_calibrate.ret, self.data_calibrate.mtx, self.data_calibrate.dist, self.data_calibrate.rvecs, self.data_calibrate.tvecs = cv.calibrateCamera(
             objpoints, imgpoints, img_gray.shape[::-1], None, None)
@@ -114,8 +115,8 @@ class Calibrate:
 
 if __name__ == '__main__':
     cali = Calibrate()
-    #cali.init_calibration_bed('../imagen_examples/chess', 'jpg', 15)
-    #cali.save_coefficientes('../file_calibration', 'calibration')
-    cali.load_coefficientes('../file_calibration/calibration.pckl')
+    cali.init_calibration_bed('../imagen_examples/chess_v2', 'jpg', 15)
+    cali.save_coefficientes('../file_calibration', 'calibration_v2')
+    # cali.load_coefficientes('../file_calibration/calibration.pckl')
 
     print(cali.data_calibrate.mtx)
