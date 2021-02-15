@@ -4,5 +4,5 @@
 main.py
 file_calibration/
 imagen_examples/
-__pycache__/
+*__pycache__/
 perpective_main.py
