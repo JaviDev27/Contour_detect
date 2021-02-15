@@ -66,9 +66,6 @@ class Calibrate:
             ret, corners = cv.findChessboardCorners(
                 img_gray, (width, heigth), None)
 
-            print("Puntos", corners)
-            print('Tamaño de la matriz ', corners.shape)
-
             # Si se encuentran, añada puntos de objeto, puntos de imagen (después de refinarlos)
             if ret == True:
                 objpoints.append(objp)  # Se agrega puntos de objeto ala array
