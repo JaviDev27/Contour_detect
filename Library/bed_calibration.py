@@ -21,8 +21,9 @@ class Calibrate:
     """Clase que sirve para calibrar la cama
     """
 
-    def __init__(self, wait=1):
+    def __init__(self, wait=1, scalePercent=100):
         self.wait = wait
+        self.scalePercent = scalePercent
         # Variables of the class
         self.data_calibrate = Data_Calibrate()
 
@@ -56,17 +57,32 @@ class Calibrate:
         imgpoints = []  # puntos 2d en la imagen
 
         print('Calibration Beb Start ____')
-        print('Files:', images)
+        print('Files numbers:', len(images))
+
+        count_images = 0  # count the files
 
         # Se recorre cada imagen del directorio
         for fname in images:
             img = cv.imread(fname)
+            # hago un resize de la imagen
+
+            width_img = int(img.shape[1]*self.scalePercent/100)
+            height_img = int(img.shape[0]*self.scalePercent/100)
+            resized = cv.resize(img, (width_img, height_img),
+                                interpolation=cv.INTER_AREA)
+            print(width_img, height_img)
+            img = resized
+
             # transforma a escala de grises
             img_gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
             # Encuentra las esquinas del tablero de ajedrez
             ret, corners = cv.findChessboardCorners(
                 img_gray, (width, heigth), None)
+            count_images += 1
+            # display status calibration
+            print('Find Countors : {0} of {1} is {2} __ File name: {3}'.format(
+                count_images, len(images), ret, fname))
 
             # Si se encuentran, añada puntos de objeto, puntos de imagen (después de refinarlos)
             if ret == True:
