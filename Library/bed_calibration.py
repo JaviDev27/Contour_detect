@@ -55,9 +55,11 @@ class Calibrate:
         objpoints = []  # puntos de objeto en 3d
         imgpoints = []  # puntos 2d en la imagen
 
+        print('Calibration Beb Start ____')
+        print('Files:', images)
+
         # Se recorre cada imagen del directorio
         for fname in images:
-
             img = cv.imread(fname)
             # transforma a escala de grises
             img_gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
@@ -112,8 +114,8 @@ class Calibrate:
 
 if __name__ == '__main__':
     cali = Calibrate()
-    cali.init_calibration_bed('../imagen_examples/chess_v2', 'jpg', 15)
-    cali.save_coefficientes('../file_calibration', 'calibration_v2')
+    cali.init_calibration_bed('../imagen_examples/chess_v3', 'jpg', 18)
+    cali.save_coefficientes('../file_calibration', 'calibration_v3')
     # cali.load_coefficientes('../file_calibration/calibration.pckl')
 
     print(cali.data_calibrate.mtx)
