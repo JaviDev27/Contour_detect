@@ -37,3 +37,5 @@ class Perspective:
         dts = cv.warpPerspective(self.imagen, matrixM, (width, height))
 
         cv.imshow('Perspectiva', dts)
+
+        return dts
