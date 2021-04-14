@@ -130,8 +130,8 @@ class Calibrate:
 
 if __name__ == '__main__':
     cali = Calibrate()
-    cali.init_calibration_bed('../imagen_examples/chess_v3', 'jpg', 18)
-    cali.save_coefficientes('../file_calibration', 'calibration_v3')
+    cali.init_calibration_bed('../imagen_examples/camera_francisco', 'jpg', 18)
+    cali.save_coefficientes('../file_calibration', 'calibration_francisco')
     # cali.load_coefficientes('../file_calibration/calibration.pckl')
 
     print(cali.data_calibrate.mtx)
