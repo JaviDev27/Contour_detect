@@ -1,9 +1,6 @@
 *env
 *imagen_examples
 *vscode
-main.py
 file_calibration/
 imagen_examples/
 *__pycache__/
-perpective_main.py
-countor.dxf
