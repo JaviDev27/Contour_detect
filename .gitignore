@@ -4,3 +4,4 @@
 file_calibration/
 imagen_examples/
 *__pycache__/
+*.csv
